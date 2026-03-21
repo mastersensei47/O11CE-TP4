@@ -9,7 +9,7 @@
 *{ margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
 body{ background:#0e0e0e; color:white; }
 
-/* ===== NAVBAR RESPONSIVA ===== */
+/* ===== NAVBAR ===== */
 .navbar{
   width:100%;
   background: rgba(17, 17, 17, 0.95);
@@ -23,70 +23,108 @@ body{ background:#0e0e0e; color:white; }
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:10px 15px;
+  padding: 12px 20px;
 }
 .logo{
-  font-size:22px; font-weight:bold; color: #fff;
+  font-size:24px; font-weight:bold; color: #fff;
   text-shadow: 0 0 10px #ff0000; text-decoration: none;
 }
-.nav-links{ display:flex; gap:8px; align-items: center; }
+.nav-links{ display:flex; gap:10px; align-items: center; }
 .nav-links a{
-  color:#ccc; text-decoration:none; font-weight:bold; font-size: 12px;
-  display: flex; align-items: center; gap: 4px;
-  padding: 6px 8px; border-radius: 6px; transition:0.3s;
+  color:#ccc; text-decoration:none; font-weight:bold; font-size: 13px;
+  display: flex; align-items: center; gap: 5px;
+  padding: 8px 10px; border-radius: 8px; transition:0.3s;
 }
 .btn-mas-juegos { background: #333; border: 1px solid #444; }
 .btn-jugar { border: 1px solid #00ff00; color: #00ff00 !important; }
 
 /* ===== REPRODUCTOR ===== */
-main{ margin-top:80px; padding:15px; max-width:1100px; margin-left:auto; margin-right:auto; }
+main{ margin-top:90px; padding:20px; max-width:1100px; margin-left:auto; margin-right:auto; }
 
 .reproductor-box {
-    background: #111; border-radius: 12px; overflow: hidden;
-    border: 1px solid #222; box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
-    margin-bottom: 20px;
+  background: #111; border-radius: 15px; overflow: hidden;
+  border: 1px solid #222; box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
+  margin-bottom: 25px;
 }
 .video-container { position: relative; padding-top: 56.25%; background: #000; }
 .video-container iframe { 
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-    border: none;
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+  border: none;
 }
 
-.info-capitulo { padding: 15px; background: #161616; border-top: 2px solid #ff0000; }
-.info-capitulo h1 { font-size: 18px; margin-bottom: 5px; }
-.info-capitulo p { font-size: 13px; color: #888; }
+.info-capitulo { padding: 20px; background: #161616; border-top: 2px solid #ff0000; }
+.info-capitulo h1 { font-size: 22px; margin-bottom: 5px; }
 
-/* ===== GRILLA DE CAPÍTULOS RESPONSIVA ===== */
-.titulo-seccion { margin: 15px 0; border-left: 4px solid #ff0000; padding-left: 12px; text-transform: uppercase; font-size: 18px; }
+/* ===== GRILLA DE CAPÍTULOS ===== */
+.titulo-seccion { margin: 20px 0; border-left: 4px solid #ff0000; padding-left: 15px; text-transform: uppercase; }
+
 .grid-capitulos {
-    display: grid;
-    /* Ajuste automático según el ancho del celular */
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-    gap: 8px;
-    margin-bottom: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 8px;
+  margin-bottom: 40px;
 }
 .cap-btn {
-    background: #1b1b1b; border: 1px solid #333; color: white;
-    padding: 12px 5px; text-align: center; border-radius: 6px;
-    cursor: pointer; font-weight: bold; font-size: 13px; transition: 0.2s;
+  background: #1b1b1b; border: 1px solid #333; color: white;
+  padding: 12px 5px; text-align: center; border-radius: 6px;
+  cursor: pointer; font-weight: bold; font-size: 14px; transition: 0.2s;
 }
-.cap-btn:hover { background: #ff0000; }
+.cap-btn:hover { background: #ff0000; transform: scale(1.05); }
 .cap-btn.active { background: #ff0000; border-color: white; box-shadow: 0 0 10px rgba(255,0,0,0.5); }
 
-/* ===== MEDIA QUERIES PARA CELULARES ===== */
-@media(max-width:768px){
-  .nav-links span { display: none; } /* Oculta el texto, deja solo los emojis */
-  .nav-links a { font-size: 16px; padding: 8px; } /* Agranda el área de clic para el dedo */
-  .logo { font-size: 20px; }
-  .info-capitulo h1 { font-size: 16px; }
-  .grid-capitulos { grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); } /* Botones un poco más pequeños para que quepan más */
-}
 
-@media(max-width:480px){
-  main { padding: 10px; margin-top: 70px; }
-  .navbar { padding: 5px 0; }
-  .grid-capitulos { gap: 5px; }
-  .cap-btn { padding: 10px 2px; font-size: 11px; }
+/* =========================================
+   📱 AJUSTES ESPECIALES PARA CELULARES
+   ========================================= */
+@media(max-width: 768px) {
+  main {
+    margin-top: 130px; /* Evita que la navbar tape el video */
+    padding: 10px; /* Reduce márgenes laterales */
+  }
+
+  .nav-container {
+    flex-direction: column; /* Apila el Logo arriba y los links abajo */
+    gap: 15px;
+    padding: 12px 10px;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap; /* Si no caben, bajan de línea sin romperse */
+    gap: 6px;
+  }
+
+  .nav-links a {
+    font-size: 12px; /* Letra un poco más chica */
+    padding: 8px 6px;
+  }
+
+  .nav-links span {
+    display: none; /* Oculta los textos largos como "Más Juegos" o "Jugar Online" en móviles para ahorrar espacio */
+  }
+
+  .reproductor-box {
+    border-radius: 8px; /* Menos redondeado para no perder espacio */
+  }
+
+  .info-capitulo {
+    padding: 15px;
+  }
+
+  .info-capitulo h1 {
+    font-size: 18px; /* Título un poco más chico para pantallas angostas */
+  }
+
+  .grid-capitulos {
+    grid-template-columns: repeat(auto-fill, minmax(75px, 1fr)); /* Botones más compactos en celu */
+    gap: 6px;
+  }
+
+  .cap-btn {
+    font-size: 12px;
+    padding: 10px 4px;
+  }
 }
 </style>
 </head>
@@ -113,7 +151,7 @@ main{ margin-top:80px; padding:15px; max-width:1100px; margin-left:auto; margin-
         </div>
         <div class="info-capitulo">
             <h1 id="titulo-display">O11CE Nueva Generación - Capítulo 1</h1>
-            <p>Temporada 4 | MS47</p>
+            <p style="color: #888;">Temporada 4 | MS47</p>
         </div>
     </section>
 
@@ -143,13 +181,14 @@ main{ margin-top:80px; padding:15px; max-width:1100px; margin-left:auto; margin-
 <script>
 function cambiarVideo(id, titulo, elemento) {
     const newSrc = "https://drive.google.com/file/d/" + id + "/preview";
+    
     document.getElementById('video-drive').src = newSrc;
     document.getElementById('titulo-display').innerText = "O11CE Nueva Generación - " + titulo;
+    
     let botones = document.querySelectorAll('.cap-btn');
     botones.forEach(btn => btn.classList.remove('active'));
     elemento.classList.add('active');
     
-    // En móvil, sube al video para que el usuario no tenga que hacer scroll manual
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
