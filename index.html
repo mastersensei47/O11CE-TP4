@@ -6,47 +6,81 @@
 <title>MS47 - O11CE Nueva Generación</title>
 
 <style>
-*{ margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+*{ margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
 body{ background:#0e0e0e; color:white; }
 
 /* ===== NAVBAR ===== */
 .navbar{
-  width:100%; background: rgba(17, 17, 17, 0.98);
-  position:fixed; top:0; left:0; z-index:1000; border-bottom: 1px solid #333;
+  width:100%;
+  background: rgba(17, 17, 17, 0.95);
+  position:fixed;
+  top:0; left:0; z-index:1000;
+  border-bottom: 1px solid #333;
 }
 .nav-container{
-  max-width:1400px; margin:auto; display:flex; justify-content:space-between;
-  align-items:center; padding:12px 20px;
+  max-width:1400px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 20px;
 }
-.logo{ font-size:24px; font-weight:bold; color: #fff; text-shadow: 0 0 10px #ff0000; text-decoration: none; }
+.logo{
+  font-size:24px; font-weight:bold; color: #fff;
+  text-shadow: 0 0 10px #ff0000; text-decoration: none;
+}
 .nav-links{ display:flex; gap:10px; align-items: center; }
-.nav-links a{ color:#ccc; text-decoration:none; font-weight:bold; font-size: 13px; padding: 8px 10px; border-radius: 8px; transition:0.3s; }
+.nav-links a{
+  color:#ccc; text-decoration:none; font-weight:bold; font-size: 13px;
+  display: flex; align-items: center; gap: 5px;
+  padding: 8px 10px; border-radius: 8px; transition:0.3s;
+}
 .btn-mas-juegos { background: #333; border: 1px solid #444; }
 .btn-jugar { border: 1px solid #00ff00; color: #00ff00 !important; }
 
 /* ===== REPRODUCTOR ===== */
 main{ margin-top:90px; padding:20px; max-width:1100px; margin-left:auto; margin-right:auto; }
-.reproductor-box { background: #111; border-radius: 15px; overflow: hidden; border: 1px solid #222; box-shadow: 0 0 30px rgba(255, 0, 0, 0.2); margin-bottom: 25px; }
+
+.reproductor-box {
+    background: #111; border-radius: 15px; overflow: hidden;
+    border: 1px solid #222; box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
+    margin-bottom: 25px;
+}
 .video-container { position: relative; padding-top: 56.25%; background: #000; }
-.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+.video-container iframe { 
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+    border: none;
+}
+
 .info-capitulo { padding: 20px; background: #161616; border-top: 2px solid #ff0000; }
-.info-capitulo h1 { font-size: 20px; }
+.info-capitulo h1 { font-size: 22px; margin-bottom: 5px; }
 
 /* ===== GRILLA DE CAPÍTULOS ===== */
 .titulo-seccion { margin: 20px 0; border-left: 4px solid #ff0000; padding-left: 15px; text-transform: uppercase; }
-.grid-capitulos { display: grid; grid-template-columns: repeat(auto-fill, minmax(85px, 1fr)); gap: 8px; margin-bottom: 40px; }
-.cap-btn { background: #1b1b1b; border: 1px solid #333; color: white; padding: 12px 5px; text-align: center; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 13px; transition: 0.2s; }
+.grid-capitulos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 8px;
+    margin-bottom: 40px;
+}
+.cap-btn {
+    background: #1b1b1b; border: 1px solid #333; color: white;
+    padding: 12px 5px; text-align: center; border-radius: 6px;
+    cursor: pointer; font-weight: bold; font-size: 14px; transition: 0.2s;
+}
 .cap-btn:hover { background: #ff0000; transform: scale(1.05); }
 .cap-btn.active { background: #ff0000; border-color: white; box-shadow: 0 0 10px rgba(255,0,0,0.5); }
+
+@media(max-width:700px){ .nav-links span { display: none; } }
 </style>
 </head>
 <body>
 
 <nav class="navbar">
   <div class="nav-container">
-    <a href="#" class="logo">MS47</a>
+    <a href="index.html" class="logo">MS47</a>
     <div class="nav-links">
-      <a href="#" class="btn-mas-juegos">🎮 <span>Más Juegos</span></a>
+      <a href="categorias.html" class="btn-mas-juegos">🎮 <span>Más Juegos</span></a>
       <a href="https://gam.onl/" target="_blank" class="btn-jugar">🕹️ <span>Jugar Online</span></a>
       <a href="https://www.youtube.com/@mastersensei-47" target="_blank">🎬 <span>YouTube</span></a>
       <a href="https://www.instagram.com/master__sensei47" target="_blank">📸 <span>Instagram</span></a>
@@ -57,25 +91,22 @@ main{ margin-top:90px; padding:20px; max-width:1100px; margin-left:auto; margin-
 
 <main>
     <section class="reproductor-box">
-        <div class="video-container" id="container">
-            <iframe id="video-drive" 
-                    src="https://drive.google.com/file/d/1jAOKTdH6XzdVnW_wQe-rXP4-M6ZoKZmO/preview" 
-                    allow="autoplay; fullscreen" 
-                    sandbox="allow-forms allow-scripts allow-same-origin allow-popups"
-                    allowfullscreen></iframe>
+        <div class="video-container">
+            <iframe id="video-drive" src="https://drive.google.com/file/d/1jAOKTdH6XzdVnW_wQe-rXP4-M6ZoKZmO/preview" 
+                    allow="autoplay" allowfullscreen referrerpolicy="no-referrer"></iframe>
         </div>
         <div class="info-capitulo">
             <h1 id="titulo-display">O11CE Nueva Generación - Capítulo 1</h1>
-            <p style="color: #888; font-size: 14px;">Servidor: Google Drive High Quality</p>
+            <p style="color: #888;">Temporada 1 | Google Drive Player</p>
         </div>
     </section>
 
-    <h2 class="titulo-seccion">Episodios</h2>
+    <h2 class="titulo-seccion">Seleccionar Capítulo</h2>
     <div class="grid-capitulos">
-        <div class="cap-btn active" onclick="cambiarVideo('1jAOKTdH6XzdVnW_wQe-rXP4-M6ZoKZmO', 'Capítulo 1', this)">CAP 1</div>
+<div class="cap-btn active" onclick="cambiarVideo('1jAOKTdH6XzdVnW_wQe-rXP4-M6ZoKZmO', 'Capítulo 1', this)">CAP 1</div>
         <div class="cap-btn" onclick="cambiarVideo('1ma6lGDjxb4noqqP5_NZvjmGInzGCseWr', 'Capítulo 2', this)">CAP 2</div>
         <div class="cap-btn" onclick="cambiarVideo('1nWVHVZr1JzlpVausPqqxZ0TvSZuMN9rC', 'Capítulo 3', this)">CAP 3</div>
-        <div class="cap-btn" onclick="cambiarVideo('1O0ieq-HpS-xZIs5c16fJehFLprQ-PiAe', 'Capítulo 5', this)">CAP 5</div>
+        <div class="cap-btn" onclick="cambiarVideo('1O0ieq-HpS-xZIs5c16fJehFLprQ-PiAe', 'Capítulo 4 (Cap 5 file)', this)">CAP 4</div>
         <div class="cap-btn" onclick="cambiarVideo('1jONSJ3SOa9YWF5UjKxwlfkLjfLZO_SPJ', 'Capítulo 6', this)">CAP 6</div>
         <div class="cap-btn" onclick="cambiarVideo('1T_V7yXiCTPQCyjmFs0uUQTjUnaItLTxU', 'Capítulo 7', this)">CAP 7</div>
         <div class="cap-btn" onclick="cambiarVideo('1AMfEPMs0gZ3RG52-1sJakOoUOlt-qn0L', 'Capítulo 8', this)">CAP 8</div>
@@ -95,20 +126,18 @@ main{ margin-top:90px; padding:20px; max-width:1100px; margin-left:auto; margin-
 
 <script>
 function cambiarVideo(id, titulo, elemento) {
-    const iframe = document.getElementById('video-drive');
+    // Usamos el formato /preview que es el único que funciona para embeber
+    const newSrc = "https://drive.google.com/file/d/" + id + "/preview";
     
-    // Forzamos la reconstrucción del src para refrescar el reproductor
-    const nuevaUrl = "https://drive.google.com/file/d/" + id + "/preview";
-    
-    iframe.src = nuevaUrl;
+    // Cambiar video y titulo
+    document.getElementById('video-drive').src = newSrc;
     document.getElementById('titulo-display').innerText = "O11CE Nueva Generación - " + titulo;
     
-    // Estética de botones
+    // Cambiar boton activo
     let botones = document.querySelectorAll('.cap-btn');
     botones.forEach(btn => btn.classList.remove('active'));
     elemento.classList.add('active');
     
-    // Subir scroll suave
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
