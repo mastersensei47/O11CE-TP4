@@ -9,7 +9,7 @@
 *{ margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
 body{ background:#0e0e0e; color:white; }
 
-/* ===== NAVBAR ===== */
+/* ===== NAVBAR RESPONSIVA ===== */
 .navbar{
   width:100%;
   background: rgba(17, 17, 17, 0.95);
@@ -23,28 +23,28 @@ body{ background:#0e0e0e; color:white; }
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:12px 20px;
+  padding:10px 15px;
 }
 .logo{
-  font-size:24px; font-weight:bold; color: #fff;
+  font-size:22px; font-weight:bold; color: #fff;
   text-shadow: 0 0 10px #ff0000; text-decoration: none;
 }
-.nav-links{ display:flex; gap:10px; align-items: center; }
+.nav-links{ display:flex; gap:8px; align-items: center; }
 .nav-links a{
-  color:#ccc; text-decoration:none; font-weight:bold; font-size: 13px;
-  display: flex; align-items: center; gap: 5px;
-  padding: 8px 10px; border-radius: 8px; transition:0.3s;
+  color:#ccc; text-decoration:none; font-weight:bold; font-size: 12px;
+  display: flex; align-items: center; gap: 4px;
+  padding: 6px 8px; border-radius: 6px; transition:0.3s;
 }
 .btn-mas-juegos { background: #333; border: 1px solid #444; }
 .btn-jugar { border: 1px solid #00ff00; color: #00ff00 !important; }
 
 /* ===== REPRODUCTOR ===== */
-main{ margin-top:90px; padding:20px; max-width:1100px; margin-left:auto; margin-right:auto; }
+main{ margin-top:80px; padding:15px; max-width:1100px; margin-left:auto; margin-right:auto; }
 
 .reproductor-box {
-    background: #111; border-radius: 15px; overflow: hidden;
-    border: 1px solid #222; box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
-    margin-bottom: 25px;
+    background: #111; border-radius: 12px; overflow: hidden;
+    border: 1px solid #222; box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+    margin-bottom: 20px;
 }
 .video-container { position: relative; padding-top: 56.25%; background: #000; }
 .video-container iframe { 
@@ -52,26 +52,42 @@ main{ margin-top:90px; padding:20px; max-width:1100px; margin-left:auto; margin-
     border: none;
 }
 
-.info-capitulo { padding: 20px; background: #161616; border-top: 2px solid #ff0000; }
-.info-capitulo h1 { font-size: 22px; margin-bottom: 5px; }
+.info-capitulo { padding: 15px; background: #161616; border-top: 2px solid #ff0000; }
+.info-capitulo h1 { font-size: 18px; margin-bottom: 5px; }
+.info-capitulo p { font-size: 13px; color: #888; }
 
-/* ===== GRILLA DE CAPÍTULOS ===== */
-.titulo-seccion { margin: 20px 0; border-left: 4px solid #ff0000; padding-left: 15px; text-transform: uppercase; }
+/* ===== GRILLA DE CAPÍTULOS RESPONSIVA ===== */
+.titulo-seccion { margin: 15px 0; border-left: 4px solid #ff0000; padding-left: 12px; text-transform: uppercase; font-size: 18px; }
 .grid-capitulos {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    /* Ajuste automático según el ancho del celular */
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
     gap: 8px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 .cap-btn {
     background: #1b1b1b; border: 1px solid #333; color: white;
     padding: 12px 5px; text-align: center; border-radius: 6px;
-    cursor: pointer; font-weight: bold; font-size: 14px; transition: 0.2s;
+    cursor: pointer; font-weight: bold; font-size: 13px; transition: 0.2s;
 }
-.cap-btn:hover { background: #ff0000; transform: scale(1.05); }
+.cap-btn:hover { background: #ff0000; }
 .cap-btn.active { background: #ff0000; border-color: white; box-shadow: 0 0 10px rgba(255,0,0,0.5); }
 
-@media(max-width:700px){ .nav-links span { display: none; } }
+/* ===== MEDIA QUERIES PARA CELULARES ===== */
+@media(max-width:768px){
+  .nav-links span { display: none; } /* Oculta el texto, deja solo los emojis */
+  .nav-links a { font-size: 16px; padding: 8px; } /* Agranda el área de clic para el dedo */
+  .logo { font-size: 20px; }
+  .info-capitulo h1 { font-size: 16px; }
+  .grid-capitulos { grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); } /* Botones un poco más pequeños para que quepan más */
+}
+
+@media(max-width:480px){
+  main { padding: 10px; margin-top: 70px; }
+  .navbar { padding: 5px 0; }
+  .grid-capitulos { gap: 5px; }
+  .cap-btn { padding: 10px 2px; font-size: 11px; }
+}
 </style>
 </head>
 <body>
@@ -97,13 +113,13 @@ main{ margin-top:90px; padding:20px; max-width:1100px; margin-left:auto; margin-
         </div>
         <div class="info-capitulo">
             <h1 id="titulo-display">O11CE Nueva Generación - Capítulo 1</h1>
-            <p style="color: #888;">Temporada 4 | MS47</p>
+            <p>Temporada 4 | MS47</p>
         </div>
     </section>
 
     <h2 class="titulo-seccion">Seleccionar Capítulo</h2>
     <div class="grid-capitulos">
-<div class="cap-btn active" onclick="cambiarVideo('1jAOKTdH6XzdVnW_wQe-rXP4-M6ZoKZmO', 'Capítulo 1', this)">CAP 1</div>
+        <div class="cap-btn active" onclick="cambiarVideo('1jAOKTdH6XzdVnW_wQe-rXP4-M6ZoKZmO', 'Capítulo 1', this)">CAP 1</div>
         <div class="cap-btn" onclick="cambiarVideo('1ma6lGDjxb4noqqP5_NZvjmGInzGCseWr', 'Capítulo 2', this)">CAP 2</div>
         <div class="cap-btn" onclick="cambiarVideo('1nWVHVZr1JzlpVausPqqxZ0TvSZuMN9rC', 'Capítulo 3', this)">CAP 3</div>
         <div class="cap-btn" onclick="cambiarVideo('1O0ieq-HpS-xZIs5c16fJehFLprQ-PiAe', 'Capítulo 4 (Cap 5 file)', this)">CAP 4</div>
@@ -126,18 +142,14 @@ main{ margin-top:90px; padding:20px; max-width:1100px; margin-left:auto; margin-
 
 <script>
 function cambiarVideo(id, titulo, elemento) {
-    // Usamos el formato /preview que es el único que funciona para embeber
     const newSrc = "https://drive.google.com/file/d/" + id + "/preview";
-    
-    // Cambiar video y titulo
     document.getElementById('video-drive').src = newSrc;
     document.getElementById('titulo-display').innerText = "O11CE Nueva Generación - " + titulo;
-    
-    // Cambiar boton activo
     let botones = document.querySelectorAll('.cap-btn');
     botones.forEach(btn => btn.classList.remove('active'));
     elemento.classList.add('active');
     
+    // En móvil, sube al video para que el usuario no tenga que hacer scroll manual
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
