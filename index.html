@@ -6,125 +6,101 @@
 <title>MS47 - O11CE Nueva Generación</title>
 
 <style>
-*{ margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
-body{ background:#0e0e0e; color:white; }
+*{ margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+body{ background:#0e0e0e; color:white; overflow-x: hidden; }
 
-/* ===== NAVBAR ===== */
+/* ===== NAVBAR REDISEÑADA PARA MÓVIL ===== */
 .navbar{
   width:100%;
-  background: rgba(17, 17, 17, 0.95);
+  background: #111;
   position:fixed;
   top:0; left:0; z-index:1000;
-  border-bottom: 1px solid #333;
+  border-bottom: 2px solid #ff0000;
 }
 .nav-container{
   max-width:1400px;
   margin:auto;
   display:flex;
-  justify-content:space-between;
+  flex-direction: column; /* Apilado en móvil */
   align-items:center;
-  padding: 12px 20px;
+  padding: 10px;
 }
 .logo{
   font-size:24px; font-weight:bold; color: #fff;
   text-shadow: 0 0 10px #ff0000; text-decoration: none;
+  margin-bottom: 10px;
 }
-.nav-links{ display:flex; gap:10px; align-items: center; }
+.nav-links{ 
+  display:flex; 
+  gap:8px; 
+  justify-content: center;
+  width: 100%;
+}
 .nav-links a{
-  color:#ccc; text-decoration:none; font-weight:bold; font-size: 13px;
-  display: flex; align-items: center; gap: 5px;
-  padding: 8px 10px; border-radius: 8px; transition:0.3s;
+  color:#fff; text-decoration:none; 
+  background: #222;
+  padding: 10px; 
+  border-radius: 50%; /* Iconos redondos */
+  width: 45px; height: 45px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  border: 1px solid #333;
+  transition: 0.3s;
 }
-.btn-mas-juegos { background: #333; border: 1px solid #444; }
-.btn-jugar { border: 1px solid #00ff00; color: #00ff00 !important; }
+.nav-links a span { display: none; } /* Ocultar texto siempre en móvil */
+.btn-jugar { border-color: #00ff00 !important; }
 
-/* ===== REPRODUCTOR ===== */
-main{ margin-top:90px; padding:20px; max-width:1100px; margin-left:auto; margin-right:auto; }
+/* ===== CONTENIDO PRINCIPAL ===== */
+main{ 
+  margin-top: 130px; /* Espacio para la navbar doble */
+  padding: 15px; 
+  max-width: 1100px; 
+  margin-left: auto; margin-right: auto; 
+}
 
 .reproductor-box {
-  background: #111; border-radius: 15px; overflow: hidden;
-  border: 1px solid #222; box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
-  margin-bottom: 25px;
+  background: #111; border-radius: 12px; overflow: hidden;
+  border: 1px solid #222; box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+  margin-bottom: 20px;
 }
 .video-container { position: relative; padding-top: 56.25%; background: #000; }
 .video-container iframe { 
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-  border: none;
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
 }
 
-.info-capitulo { padding: 20px; background: #161616; border-top: 2px solid #ff0000; }
-.info-capitulo h1 { font-size: 22px; margin-bottom: 5px; }
+.info-capitulo { padding: 15px; background: #161616; border-top: 2px solid #ff0000; }
+.info-capitulo h1 { font-size: 18px; margin-bottom: 5px; }
+.info-capitulo p { font-size: 13px; color: #888; }
 
 /* ===== GRILLA DE CAPÍTULOS ===== */
-.titulo-seccion { margin: 20px 0; border-left: 4px solid #ff0000; padding-left: 15px; text-transform: uppercase; }
+.titulo-seccion { 
+    margin: 20px 0 15px; 
+    border-left: 4px solid #ff0000; 
+    padding-left: 12px; 
+    font-size: 18px;
+    text-transform: uppercase; 
+}
 
 .grid-capitulos {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas fijas en móvil */
   gap: 8px;
-  margin-bottom: 40px;
 }
 .cap-btn {
   background: #1b1b1b; border: 1px solid #333; color: white;
-  padding: 12px 5px; text-align: center; border-radius: 6px;
-  cursor: pointer; font-weight: bold; font-size: 14px; transition: 0.2s;
+  padding: 12px 0; text-align: center; border-radius: 6px;
+  cursor: pointer; font-weight: bold; font-size: 13px;
 }
-.cap-btn:hover { background: #ff0000; transform: scale(1.05); }
-.cap-btn.active { background: #ff0000; border-color: white; box-shadow: 0 0 10px rgba(255,0,0,0.5); }
+.cap-btn.active { background: #ff0000; border-color: white; }
 
-
-/* =========================================
-   📱 AJUSTES ESPECIALES PARA CELULARES
-   ========================================= */
-@media(max-width: 768px) {
-  main {
-    margin-top: 130px; /* Evita que la navbar tape el video */
-    padding: 10px; /* Reduce márgenes laterales */
-  }
-
-  .nav-container {
-    flex-direction: column; /* Apila el Logo arriba y los links abajo */
-    gap: 15px;
-    padding: 12px 10px;
-  }
-
-  .nav-links {
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap; /* Si no caben, bajan de línea sin romperse */
-    gap: 6px;
-  }
-
-  .nav-links a {
-    font-size: 12px; /* Letra un poco más chica */
-    padding: 8px 6px;
-  }
-
-  .nav-links span {
-    display: none; /* Oculta los textos largos como "Más Juegos" o "Jugar Online" en móviles para ahorrar espacio */
-  }
-
-  .reproductor-box {
-    border-radius: 8px; /* Menos redondeado para no perder espacio */
-  }
-
-  .info-capitulo {
-    padding: 15px;
-  }
-
-  .info-capitulo h1 {
-    font-size: 18px; /* Título un poco más chico para pantallas angostas */
-  }
-
-  .grid-capitulos {
-    grid-template-columns: repeat(auto-fill, minmax(75px, 1fr)); /* Botones más compactos en celu */
-    gap: 6px;
-  }
-
-  .cap-btn {
-    font-size: 12px;
-    padding: 10px 4px;
-  }
+/* AJUSTES PARA PC */
+@media(min-width: 769px) {
+  .nav-container { flex-direction: row; padding: 12px 20px; }
+  .logo { margin-bottom: 0; }
+  .nav-links a { border-radius: 8px; width: auto; height: auto; padding: 8px 15px; font-size: 14px; }
+  .nav-links a span { display: inline; }
+  main { margin-top: 90px; }
+  .grid-capitulos { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
 }
 </style>
 </head>
@@ -134,11 +110,11 @@ main{ margin-top:90px; padding:20px; max-width:1100px; margin-left:auto; margin-
   <div class="nav-container">
     <a href="index.html" class="logo">MS47</a>
     <div class="nav-links">
-      <a href="categorias.html" class="btn-mas-juegos">🎮 <span>Más Juegos</span></a>
-      <a href="https://gam.onl/" target="_blank" class="btn-jugar">🕹️ <span>Jugar Online</span></a>
-      <a href="https://www.youtube.com/@mastersensei-47" target="_blank">🎬 <span>YouTube</span></a>
-      <a href="https://www.instagram.com/master__sensei47" target="_blank">📸 <span>Instagram</span></a>
-      <a href="https://www.tiktok.com/@mastersensei47" target="_blank">📱 <span>TikTok</span></a>
+      <a href="categorias.html" title="Más Juegos">🎮<span>Más Juegos</span></a>
+      <a href="https://gam.onl/" target="_blank" class="btn-jugar" title="Jugar Online">🕹️<span>Jugar Online</span></a>
+      <a href="https://www.youtube.com/@mastersensei-47" target="_blank" title="YouTube">🎬<span>YouTube</span></a>
+      <a href="https://www.instagram.com/master__sensei47" target="_blank" title="Instagram">📸<span>Instagram</span></a>
+      <a href="https://www.tiktok.com/@mastersensei47" target="_blank" title="TikTok">📱<span>TikTok</span></a>
     </div>
   </div>
 </nav>
@@ -147,48 +123,44 @@ main{ margin-top:90px; padding:20px; max-width:1100px; margin-left:auto; margin-
     <section class="reproductor-box">
         <div class="video-container">
             <iframe id="video-drive" src="https://drive.google.com/file/d/1jAOKTdH6XzdVnW_wQe-rXP4-M6ZoKZmO/preview" 
-                    allow="autoplay" allowfullscreen referrerpolicy="no-referrer"></iframe>
+                    allowfullscreen referrerpolicy="no-referrer"></iframe>
         </div>
         <div class="info-capitulo">
-            <h1 id="titulo-display">O11CE Nueva Generación - Capítulo 1</h1>
-            <p style="color: #888;">Temporada 4 | MS47</p>
+            <h1 id="titulo-display">O11CE - Capítulo 1</h1>
+            <p id="subtitulo">Temporada 4 | MS47</p>
         </div>
     </section>
 
-    <h2 class="titulo-seccion">Seleccionar Capítulo</h2>
+    <h2 class="titulo-seccion">Capítulos</h2>
     <div class="grid-capitulos">
-        <div class="cap-btn active" onclick="cambiarVideo('1jAOKTdH6XzdVnW_wQe-rXP4-M6ZoKZmO', 'Capítulo 1', this)">CAP 1</div>
-        <div class="cap-btn" onclick="cambiarVideo('1ma6lGDjxb4noqqP5_NZvjmGInzGCseWr', 'Capítulo 2', this)">CAP 2</div>
-        <div class="cap-btn" onclick="cambiarVideo('1nWVHVZr1JzlpVausPqqxZ0TvSZuMN9rC', 'Capítulo 3', this)">CAP 3</div>
-        <div class="cap-btn" onclick="cambiarVideo('1O0ieq-HpS-xZIs5c16fJehFLprQ-PiAe', 'Capítulo 4 (Cap 5 file)', this)">CAP 4</div>
-        <div class="cap-btn" onclick="cambiarVideo('1jONSJ3SOa9YWF5UjKxwlfkLjfLZO_SPJ', 'Capítulo 6', this)">CAP 6</div>
-        <div class="cap-btn" onclick="cambiarVideo('1T_V7yXiCTPQCyjmFs0uUQTjUnaItLTxU', 'Capítulo 7', this)">CAP 7</div>
-        <div class="cap-btn" onclick="cambiarVideo('1AMfEPMs0gZ3RG52-1sJakOoUOlt-qn0L', 'Capítulo 8', this)">CAP 8</div>
-        <div class="cap-btn" onclick="cambiarVideo('1GBs8_KNKU-rnKsQspugKI7gu6kUqrdD3', 'Capítulo 9', this)">CAP 9</div>
-        <div class="cap-btn" onclick="cambiarVideo('1nPaGMzpvsxIObP7ZuxeWT1mMSriclb7_', 'Capítulo 10', this)">CAP 10</div>
-        <div class="cap-btn" onclick="cambiarVideo('1W67SGlDaTfoxB0FYDKjd8dkn5p_ef9bV', 'Capítulo 11', this)">CAP 11</div>
-        <div class="cap-btn" onclick="cambiarVideo('1mrvSWp1sEalT8VLZnuWMhL2-sq4F2ydg', 'Capítulo 12', this)">CAP 12</div>
-        <div class="cap-btn" onclick="cambiarVideo('1RU1xlUi59eQnXrAORE6J81vAdIxc6xJQ', 'Capítulo 14', this)">CAP 14</div>
-        <div class="cap-btn" onclick="cambiarVideo('1Aq2yCRc1NL0961XIH77zu21CIUuwBmZV', 'Capítulo 15', this)">CAP 15</div>
-        <div class="cap-btn" onclick="cambiarVideo('11VcoFde_pksT1sBkWp447Oi3LJhjiULf', 'Capítulo 16', this)">CAP 16</div>
-        <div class="cap-btn" onclick="cambiarVideo('1-A51ANW5UEUFzLmd_E4vz7p7hyg5B9Cx', 'Capítulo 17', this)">CAP 17</div>
-        <div class="cap-btn" onclick="cambiarVideo('1ra0N9BulhEBDDWIR9GLJ24k2qq6sbrCE', 'Capítulo 18', this)">CAP 18</div>
-        <div class="cap-btn" onclick="cambiarVideo('1sFXxWpEqmwSP7e2_7OYuNQRlw9rwYP7W', 'Capítulo 19', this)">CAP 19</div>
-        <div class="cap-btn" onclick="cambiarVideo('1tD8GUJ4rrYhm6ByNdIFjS6O4cZywruBq', 'Capítulo 20', this)">CAP 20</div>
+        <div class="cap-btn active" onclick="cambiarVideo('1jAOKTdH6XzdVnW_wQe-rXP4-M6ZoKZmO', 'Capítulo 1', this)">C1</div>
+        <div class="cap-btn" onclick="cambiarVideo('1ma6lGDjxb4noqqP5_NZvjmGInzGCseWr', 'Capítulo 2', this)">C2</div>
+        <div class="cap-btn" onclick="cambiarVideo('1nWVHVZr1JzlpVausPqqxZ0TvSZuMN9rC', 'Capítulo 3', this)">C3</div>
+        <div class="cap-btn" onclick="cambiarVideo('1O0ieq-HpS-xZIs5c16fJehFLprQ-PiAe', 'Capítulo 4', this)">C4</div>
+        <div class="cap-btn" onclick="cambiarVideo('1jONSJ3SOa9YWF5UjKxwlfkLjfLZO_SPJ', 'Capítulo 6', this)">C6</div>
+        <div class="cap-btn" onclick="cambiarVideo('1T_V7yXiCTPQCyjmFs0uUQTjUnaItLTxU', 'Capítulo 7', this)">C7</div>
+        <div class="cap-btn" onclick="cambiarVideo('1AMfEPMs0gZ3RG52-1sJakOoUOlt-qn0L', 'Capítulo 8', this)">C8</div>
+        <div class="cap-btn" onclick="cambiarVideo('1GBs8_KNKU-rnKsQspugKI7gu6kUqrdD3', 'Capítulo 9', this)">C9</div>
+        <div class="cap-btn" onclick="cambiarVideo('1nPaGMzpvsxIObP7ZuxeWT1mMSriclb7_', 'Capítulo 10', this)">C10</div>
+        <div class="cap-btn" onclick="cambiarVideo('1W67SGlDaTfoxB0FYDKjd8dkn5p_ef9bV', 'Capítulo 11', this)">C11</div>
+        <div class="cap-btn" onclick="cambiarVideo('1mrvSWp1sEalT8VLZnuWMhL2-sq4F2ydg', 'Capítulo 12', this)">C12</div>
+        <div class="cap-btn" onclick="cambiarVideo('1RU1xlUi59eQnXrAORE6J81vAdIxc6xJQ', 'Capítulo 14', this)">C14</div>
+        <div class="cap-btn" onclick="cambiarVideo('1Aq2yCRc1NL0961XIH77zu21CIUuwBmZV', 'Capítulo 15', this)">C15</div>
+        <div class="cap-btn" onclick="cambiarVideo('11VcoFde_pksT1sBkWp447Oi3LJhjiULf', 'Capítulo 16', this)">C16</div>
+        <div class="cap-btn" onclick="cambiarVideo('1-A51ANW5UEUFzLmd_E4vz7p7hyg5B9Cx', 'Capítulo 17', this)">C17</div>
+        <div class="cap-btn" onclick="cambiarVideo('1ra0N9BulhEBDDWIR9GLJ24k2qq6sbrCE', 'Capítulo 18', this)">C18</div>
+        <div class="cap-btn" onclick="cambiarVideo('1sFXxWpEqmwSP7e2_7OYuNQRlw9rwYP7W', 'Capítulo 19', this)">C19</div>
+        <div class="cap-btn" onclick="cambiarVideo('1tD8GUJ4rrYhm6ByNdIFjS6O4cZywruBq', 'Capítulo 20', this)">C20</div>
     </div>
 </main>
 
 <script>
 function cambiarVideo(id, titulo, elemento) {
-    const newSrc = "https://drive.google.com/file/d/" + id + "/preview";
-    
-    document.getElementById('video-drive').src = newSrc;
-    document.getElementById('titulo-display').innerText = "O11CE Nueva Generación - " + titulo;
-    
+    document.getElementById('video-drive').src = "https://drive.google.com/file/d/" + id + "/preview";
+    document.getElementById('titulo-display').innerText = "O11CE - " + titulo;
     let botones = document.querySelectorAll('.cap-btn');
     botones.forEach(btn => btn.classList.remove('active'));
     elemento.classList.add('active');
-    
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
